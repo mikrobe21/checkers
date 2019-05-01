@@ -1,10 +1,11 @@
 # checkers
-Just open index.html in your browser's window.
-There are no dependencies.
+To use the program:
+Open 'index.html' in any browser
+Press 'Generate a random board!' to populate the board.
+Press 'Find all 4s' to find any arrangement of 4 consecutive checkers
+Press 'Press to Refresh' to start the process over with new randomly placed pieces
 
-You need to press f5 to refresh, or just refresh between runs.
-Instructions
-Press the "Generate a random board!" button
-Press the "Find all 4s button"
+Testing suite uses jasmine, to use it: 
+Open 'SpecRunner.html'
 
-Testing suite has not been implemented yet.
+There are no dependencies to download, in both cases just open the html file.

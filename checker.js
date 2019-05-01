@@ -1,25 +1,9 @@
-// Take as input an 8x8 checkerboard (grid). Each square has either a red checker, 
-// a black checker, or no checker on it. (These are not placed according to the 
-// rules of checkers, but can be placed on any of the 64 squares.) You decide the 
-// format and delivery of the input/output.
-
-// Using your programming language of choice, write a program to evaluate whether 
-// there are 4 checkers of the same color (red or black) in a consecutive line 
-// anywhere on the board, horizontally, vertically, or diagonally.
-
-// Write automated tests to verify that your program functions correctly.
+//----------------------------------------------------------------------------//
+//Board Set Up
+//----------------------------------------------------------------------------//
 let red_checker = '🔴';
 let black_checker = '⚫️';
 let empty = '⚪️';
-
-let test_board = [ [ '⚫️', '⚫️', '⚫️', '⚫️', '⚫️', '⚪️', '⚪️', '⚫️' ],
-		       [ '⚫️', '⚪️', '⚫️', '🔴', '⚫️', '⚪️', '⚫️', '⚪️' ],
-		       [ '⚫️', '⚪️', '🔴', '⚫️', '⚪️', '⚫️', '⚪️', '⚫️' ],
-		       [ '⚫️', '🔴', '⚫️', '⚪️', '⚫️', '⚫️', '⚪️', '⚫️' ],
-		       [ '🔴', '⚪️', '⚪️', '⚪️', '🔴', '⚪️', '⚫️', '🔴' ],
-		       [ '⚪️', '⚫️', '⚫️', '⚪️', '⚪️', '🔴', '🔴', '🔴' ],
-		       [ '⚪️', '⚫️', '🔴', '🔴', '⚪️', '🔴', '🔴', '🔴' ],
-		       [ '⚪️', '⚫️', '🔴', '🔴', '🔴', '🔴', '⚪️', '🔴' ] ]
 
 function generate_random_piece(){
 	let value = Math.floor(Math.random() * 3);
@@ -45,7 +29,9 @@ function generate_random_board(){
 	return board;
 }
 
-//Search Algorithm
+//----------------------------------------------------------------------------//
+//Search Algorithm 
+//----------------------------------------------------------------------------//
 function find_horizontal_fours(checker_array){
 	let found_array = []
 	for(let y = 0; y < checker_array.length; y++){
@@ -121,7 +107,7 @@ function find_all_fours(checker_array){
 	return(all_4s)
 }
 //----------------------------------------------------------------------------//
-//HTML Portion
+//HTML Portion, Drawing With Canvas
 //----------------------------------------------------------------------------//
 let canvas = document.getElementById('mycanvas');
 let mycontext = canvas.getContext('2d');
@@ -174,7 +160,12 @@ function populate_board(board){
 	}
 }
 
+//----------------------------------------------------------------------------//
+//Event Listeners
+//----------------------------------------------------------------------------//
+
 let random_board = generate_random_board();
+
 document.getElementById('button1').addEventListener('click', function(){
 	populate_board(random_board);	
 });
@@ -186,7 +177,7 @@ document.getElementById('button2').addEventListener('click', function(){
 	let vertical_array = found_array[1]
 	let diagonal_down_array = found_array[2]
 	let diagonal_up_array = found_array[3]
-	
+
 	for (let i = 0; i < horizontal_array.length; i++){
 		let x = horizontal_array[i][0]
 		let y = horizontal_array[i][1]
@@ -231,9 +222,11 @@ document.getElementById('button2').addEventListener('click', function(){
 		mycontext.stroke();
 	}
 
-	
-	
+
 });
 
+document.getElementById('button3').addEventListener('click', function(){
+	location.reload(true);
+});
 
 
